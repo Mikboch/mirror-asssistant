@@ -6,7 +6,7 @@ import os
 
 
 
-filename = '/home/pi/Desktop/Scripts/VoiceAssistant/key2.json'
+filename = '/home/pi/Desktop/Scripts/key2.json'
 
 
 def open_credentials_file(filename):
