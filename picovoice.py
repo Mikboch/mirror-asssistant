@@ -76,7 +76,7 @@ while True:
         print("Hey google")
         speak_from_saved_file("state-change_confirm-down.wav")
         speak("To your service!")
-        #online_recognizer.listen_for_command()
+        # command = online_recognizer.listen_for_command()
 
         
 
