@@ -3,6 +3,7 @@ import pyaudio
 import struct
 import os
 import time
+import json
 import playsound
 from tempfile import TemporaryFile
 
@@ -55,6 +56,7 @@ audio_stream = pa.open(
                 format=pyaudio.paInt16,
                 input=True,
                 frames_per_buffer=handle.frame_length)
+
 speak_from_saved_file("notification_ambient.wav")
 speak_from_saved_file("starting_voice.mp3")
 # create_mp3_file_from_text("Hi I'm your alexa, what can i do for you?","mp3")
@@ -64,19 +66,30 @@ speak_from_saved_file("starting_voice.mp3")
 # time.sleep(5)
 print("Elko")
 
+with open('intents.json') as f:
+    intents_base = json.load(f)
+    base  = intents_base
+for word in command:
+    if word=="#":
+        break
+    
+    base = base[word]
+
+string = "what"
+print(intents_base[string])
 
 # main loop
-while True:
-    pcm = audio_stream.read(handle.frame_length)
-    pcm = struct.unpack_from("h" * handle.frame_length, pcm)
+# while True:
+#     pcm = audio_stream.read(handle.frame_length)
+#     pcm = struct.unpack_from("h" * handle.frame_length, pcm)
 
-    keyword_index = handle.process(pcm)
-    if keyword_index >= 0:
-        # detection event logic/callback
-        print("Hey google")
-        speak_from_saved_file("state-change_confirm-down.wav")
-        speak("To your service!")
-        # command = online_recognizer.listen_for_command()
+#     keyword_index = handle.process(pcm)
+#     if keyword_index >= 0:
+#         # detection event logic/callback
+#         print("Hey google")
+#         speak_from_saved_file("state-change_confirm-down.wav")
+#         speak("To your service!")
+#         # command = online_recognizer.listen_for_command()
 
         
 

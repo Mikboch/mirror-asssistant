@@ -1,8 +1,8 @@
 {
-    "what": { "time":{} , "day":{}
+    "what": { "time":{} , "day":"#"
 
       
     },
-
-    "keywords": "time, day, what, in"
+    "tell": {"me":{}}
 }
+
