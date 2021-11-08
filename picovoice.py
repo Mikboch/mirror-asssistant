@@ -15,10 +15,11 @@ from pydub import AudioSegment
 from pydub.playback import play
 
 import online_recognizer
+import date_time_service
 
 # print(pvporcupine.KEYWORDS)
 path_to_base_folder = "/home/pi/Desktop/Scripts/VoiceAssistant/"
-path_to_sounds_folder = "/home/pi/Desktop/Scripts/VoiceAssistant/sound_files/"
+path_to_sounds_folder = "/home/pi/Desktop/Scripts/VoiceAssistant/resources/sound_files"
 
 def create_mp3_file_from_text(text, file_format):
     tts = gTTS(text=text, lang="en", tld='ca')
@@ -68,15 +69,30 @@ print("Elko")
 
 with open('intents.json') as f:
     intents_base = json.load(f)
-    base  = intents_base
-for word in command:
-    if word=="#":
-        break
-    
-    base = base[word]
+    intents = intents_base
 
-string = "what"
-print(intents_base[string])
+def launch_appropriate_service(service_name, command):
+    if(service_name=="date_time_service"):
+        date_time_service.take_command(command)
+    # elif(service_name==""):    
+
+    
+
+def process_command(command):    
+    command = command+" #"
+    command.split(" ")
+    command.lower()
+
+    for word in command:
+        if word=="#":
+            break
+        
+        intents = intents[word]
+    # "I don't know how to respond to that"
+
+    launch_appropriate_service(intents, command)
+
+
 
 # main loop
 # while True:
