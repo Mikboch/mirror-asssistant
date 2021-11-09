@@ -2,7 +2,6 @@ import pvporcupine
 import pyaudio
 import struct
 import os
-import time
 import json
 import playsound
 from tempfile import TemporaryFile
@@ -15,11 +14,11 @@ from pydub import AudioSegment
 from pydub.playback import play
 
 import online_recognizer
-import date_time_service
+import intent_manager
 
 # print(pvporcupine.KEYWORDS)
-path_to_base_folder = "/home/pi/Desktop/Scripts/VoiceAssistant/"
-path_to_sounds_folder = "/home/pi/Desktop/Scripts/VoiceAssistant/resources/sound_files"
+path_to_sounds_folder = "./resources/sound_files/"
+
 
 def create_mp3_file_from_text(text, file_format):
     tts = gTTS(text=text, lang="en", tld='ca')
@@ -59,53 +58,33 @@ audio_stream = pa.open(
                 frames_per_buffer=handle.frame_length)
 
 speak_from_saved_file("notification_ambient.wav")
-speak_from_saved_file("starting_voice.mp3")
+# speak_from_saved_file("starting_voice.mp3")
+
 # create_mp3_file_from_text("Hi I'm your alexa, what can i do for you?","mp3")
 # speak_from_saved_file("Today happened: - In Sudan, a military coup deposes the government under Prime Minister Abdalla Hamdok. Ahead of Barbados becoming a republic, Sandra Mason (pictured) is elected as the country's first president.")
 # onlineRecognizer = online_recognizer.OnlineRecognizer
-
 # time.sleep(5)
-print("Elko")
 
-with open('intents.json') as f:
-    intents_base = json.load(f)
-    intents = intents_base
 
-def launch_appropriate_service(service_name, command):
-    if(service_name=="date_time_service"):
-        date_time_service.take_command(command)
-    # elif(service_name==""):    
 
     
 
-def process_command(command):    
-    command = command+" #"
-    command.split(" ")
-    command.lower()
-
-    for word in command:
-        if word=="#":
-            break
-        
-        intents = intents[word]
-    # "I don't know how to respond to that"
-
-    launch_appropriate_service(intents, command)
-
-
-
 # main loop
-# while True:
-#     pcm = audio_stream.read(handle.frame_length)
-#     pcm = struct.unpack_from("h" * handle.frame_length, pcm)
+while True:
+    pcm = audio_stream.read(handle.frame_length)
+    pcm = struct.unpack_from("h" * handle.frame_length, pcm)
 
-#     keyword_index = handle.process(pcm)
-#     if keyword_index >= 0:
-#         # detection event logic/callback
-#         print("Hey google")
-#         speak_from_saved_file("state-change_confirm-down.wav")
-#         speak("To your service!")
-#         # command = online_recognizer.listen_for_command()
+    keyword_index = handle.process(pcm)
+    if keyword_index >= 0:
+        # detection event logic/callback
+        print("Hey google")
+        speak("To your service!")
+        speak_from_saved_file("state-change_confirm-down.wav")
+        
+        command = online_recognizer.listen_for_command()
+        
+        sentence = intent_manager.process_command(command)
+        speak(sentence)
 
         
 

@@ -12,15 +12,18 @@ with open('/home/pi/Desktop/Scripts/VoiceAssistant/resources/intents/date_time_k
     keywords_file = json.load(f2)
         
 
-"What time is it in Warsaw"
+# "What time is it in Warsaw"
 
-def take_command(command):
+def take_command_and_return_info(command):
+    print("jestem tutaj")
     if "time" in command and "in" in command:
         distinct_words = filter_command(command)
+        print(distinct_words)
         city = distinct_words[0]
-        country = distinct_words[1]
+        if(len(distinct_words)>1):
+            country = distinct_words[1]
         time = get_time_in_city(city)#,distinct_words[1])
-
+        print(time)
         return "In " +city+ " it is " + time
     elif "time" in command:
         return datetime.datetime.now()
@@ -45,4 +48,12 @@ def get_time_in_city(city):
     response = requests.get(request)
     
     if(response.status_code == 200):
-        return response.json("date_time_txt")
+        date_unprocessed = response.json()["date_time_txt"]
+        day = date_unprocessed.split(",")[0]
+
+        hours_unprocessed = response.json()["time_12"]
+        str1 = hours_unprocessed[:-6]
+        str2 = hours_unprocessed[-3:]
+        hours = str1 + str2
+
+        return day+", "+ hours

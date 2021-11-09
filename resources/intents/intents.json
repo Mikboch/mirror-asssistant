@@ -3,12 +3,23 @@
         "time":{
             "is":{
                 "it": {
-                    "in":"-","-":"date_time_service"
-                }
+                    "in":"-","-":"date_time_service",
+                    "#": "date_time_service"
+                }                
             }
         }, 
-        "day":"#"
-
+        "day":{
+            "is":{
+                "it": "-","-":"date_time_service"
+                }
+        },
+        "date":{
+            "is":{
+                "it": "-","-":"date_time_service"
+                }
+        }
+         
+         
     },
     "tell": {"me":{"the": {"time":{"in":"-","-":"date_time_service"}}}}
 }
