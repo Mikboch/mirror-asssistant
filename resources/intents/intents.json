@@ -1,26 +1,43 @@
 {
     "what": {
-        "time":{
-            "is":{
+        "time": {
+            "is": {
                 "it": {
-                    "in":"-","-":"date_time_service",
+                    "in": "-",
+                    "-": "date_time_service",
                     "#": "date_time_service"
-                }                
+                }
             }
-        }, 
-        "day":{
-            "is":{
-                "it": "-","-":"date_time_service"
-                }
         },
-        "date":{
-            "is":{
-                "it": "-","-":"date_time_service"
+        "day": {
+            "is": {
+                "it": "-",
+                "-": "date_time_service",
+                "#": "date_time_service"
+            }
+        },
+        "date": {
+            "is": {
+                "it": "-",
+                "-": "date_time_service"
+            }
+        },
+        "is": {
+            "the": {
+                "date": "-",
+                "-": "date_time_service"
+            }
+        },
+        "tell": {
+            "me": {
+                "the": {
+                    "date": "-",
+                    "-": "date_time_service"
                 }
+            }
         }
-         
-         
     },
-    "tell": {"me":{"the": {"time":{"in":"-","-":"date_time_service"}}}}
+    "tell": {
+        "me": { "the": { "time": { "in": "-", "-": "date_time_service" } } }
+    }
 }
-
