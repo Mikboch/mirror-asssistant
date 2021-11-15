@@ -17,9 +17,6 @@ with open(
     keywords_file = json.load(f2)
 
 
-# "What time is it in Warsaw"
-
-
 def take_command_and_return_info(command):
     print("Command taken, entering function")
 
@@ -34,8 +31,10 @@ def take_command_and_return_info(command):
 
         return "In " + city + " it is " + time
     elif "time" in command:
-
-        return "It's currently " + datetime.datetime.now()
+        now = datetime.datetime.now()
+        time = str(now.strftime("%I:%M %p"))
+        print("Time")
+        return "It's currently " + time
     elif "day" in command and "is" in command:
         distinct_words = filter_command(command)
         day = get_day_of_week(distinct_words)
@@ -83,7 +82,6 @@ def get_time_in_city(city):
 
 def get_date():
     current_date = datetime.date.today()
-
     day_of_week = current_date.strftime("%A")
     date = current_date.strftime("%B %d %Y")
 

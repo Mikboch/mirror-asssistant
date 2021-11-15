@@ -25,19 +25,29 @@
         "is": {
             "the": {
                 "date": "-",
-                "-": "date_time_service"
-            }
-        },
-        "tell": {
-            "me": {
-                "the": {
-                    "date": "-",
-                    "-": "date_time_service"
-                }
-            }
+                "-": "date_time_service",
+                "*": "wikipedia_service"
+            },
+            "*": "wikipedia_service"
         }
     },
     "tell": {
-        "me": { "the": { "time": { "in": "-", "-": "date_time_service" } } }
-    }
+        "me": {
+            "the": {
+                "time": { "in": "-", "-": "date_time_service" },
+                "date": "-",
+                "-": "date_time_service"
+            },
+            "what": { "is": "-", "-": "wikipedia_service" }
+        }
+    },
+    "look": { "for": "-", "-": "wikipedia_service" },
+    "give": {
+        "me": {
+            "info": { "about": "-", "-": "wikipedia_service" },
+            "information": { "about": "-", "-": "wikipedia_service" }
+        }
+    },
+    "play": "music_service",
+    "add": "calendar_service"
 }
