@@ -12,7 +12,6 @@ path_to_intents = "./resources/intents/"
 with open(path_to_intents + "intents.json") as f:
     intents_base = json.load(f)
     intents = intents_base
-    print(intents)
 
 
 def launch_appropriate_service(service_name, command):
@@ -29,10 +28,10 @@ def launch_appropriate_service(service_name, command):
 def process_command(command):
     command = command + "#"
     command = command.lower()
-    l = command.split(" ")
+    formatted = command.split(" ")
 
     print("after trasformation: " + command)
-    for word in l:
+    for word in formatted:
         global intents
         print("entered through: " + word)
 
@@ -52,12 +51,12 @@ def process_command(command):
             intents = intents[word]
         except:
             try:
-                if "*" in intents:
-                    intents = intents["*"]
+                intents = intents["*"]
+                break
             except:
                 return "I don't know how to respond to that"
 
     print("intents before service: ")
-    print(intents)
-    print(l)
-    return launch_appropriate_service(intents, l)
+    # print(intents)
+    print(formatted)
+    return launch_appropriate_service(intents, formatted)

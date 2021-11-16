@@ -66,7 +66,7 @@ speak_from_saved_file("notification_ambient.wav")
 # onlineRecognizer = online_recognizer.OnlineRecognizer
 # time.sleep(5)
 
-command = "What is the "
+command = "What date is it "
 
 sentence = intent_manager.process_command(command)
 print(sentence)

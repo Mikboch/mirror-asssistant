@@ -48,6 +48,7 @@
             "information": { "about": "-", "-": "wikipedia_service" }
         }
     },
+    "who": { "is": "-", "-": "wikipedia_service" },
     "play": "music_service",
     "add": "calendar_service"
 }
