@@ -4,7 +4,10 @@ import struct
 import os
 import json
 import playsound
+import pywhatkit
 from tempfile import TemporaryFile
+import time
+
 
 from gtts import gTTS
 from io import BytesIO
@@ -66,7 +69,10 @@ speak_from_saved_file("notification_ambient.wav")
 # onlineRecognizer = online_recognizer.OnlineRecognizer
 # time.sleep(5)
 
-command = "What date is it "
+# song = ""
+# pywhatkit.playonyt(song, use_api=True)
+# time.sleep(5)
+command = "What time is it in moscow russia "
 
 sentence = intent_manager.process_command(command)
 print(sentence)

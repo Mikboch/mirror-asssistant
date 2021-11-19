@@ -23,13 +23,18 @@ def take_command_and_return_info(command):
     if "time" in command and "in" in command:
         distinct_words = filter_command(command)
         print(distinct_words)
-        city = distinct_words[0]
-        if len(distinct_words) > 1:
-            country = distinct_words[1]
-        time = get_time_in_city(city)  # ,distinct_words[1])
-        print(time)
+        city = ""
 
-        return "In " + city + " it is " + time
+        if len(distinct_words) > 0:
+            str = " ".join(distinct_words)
+            city += str
+
+        time = get_time_in_city(city)
+
+        if time is not None:
+            return "In " + city + " it is " + time
+        else:
+            return "Sorry I couln't find info about time in " + city
     elif "time" in command:
         now = datetime.datetime.now()
         time = str(now.strftime("%I:%M %p"))
@@ -99,7 +104,7 @@ def get_day_of_week(when):
         "Saturday",
     ]
 
-    if "today" in when:
+    if "today" in when or not when:
         day_index = int(datetime.date.today().strftime("%w"))
         return "Today is " + WEEK_DAYS[day_index]
     elif "tomorrow" in when:
