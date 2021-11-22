@@ -7,6 +7,7 @@ import playsound
 import pywhatkit
 from tempfile import TemporaryFile
 import time
+import sys
 
 
 from gtts import gTTS
@@ -72,11 +73,21 @@ speak_from_saved_file("notification_ambient.wav")
 # song = ""
 # pywhatkit.playonyt(song, use_api=True)
 # time.sleep(5)
-command = "What time is it in moscow russia "
+
+
+def send_to_node(status, assistant_response):
+    try:
+        print(json.dumps({"message": assistant_response}))
+    except Exception:
+        print("Error while trying to send message to node")
+    sys.stdout.flush()
+
+
+command = "Who is the who "
 
 sentence = intent_manager.process_command(command)
 print(sentence)
-
+send_to_node(sentence)
 
 # main loop
 # while True:
@@ -86,6 +97,7 @@ print(sentence)
 #     keyword_index = handle.process(pcm)
 #     if keyword_index >= 0:
 #         # detection event logic/callback
+#         send_to_node("activate", null)
 #         print("Hey google")
 #         speak("To your service!")
 #         speak_from_saved_file("state-change_confirm-down.wav")
@@ -93,7 +105,9 @@ print(sentence)
 #         command = online_recognizer.listen_for_command()
 
 #         sentence = intent_manager.process_command(command)
+#         send_to_node(null, sentence)
 #         speak(sentence)
+#         send_to_node("deactivate", null)
 
 
 # handle.delete()       <-this might be useful for echo effect

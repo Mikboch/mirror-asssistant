@@ -21,6 +21,12 @@ Module.register('MMM-VoiceAssistant',
         wrapper.innerHTML = "Hello world!";
         return wrapper;
 
+    },
+
+
+    socketNotificationReceived: function() {
+
+        
     }
 
 })

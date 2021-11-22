@@ -25,9 +25,9 @@ def take_command_and_return_info(command):
         print(distinct_words)
         city = ""
 
-        if len(distinct_words) > 0:
-            str = " ".join(distinct_words)
-            city += str
+        if distinct_words:
+            line = " ".join(distinct_words)
+            city += line
 
         time = get_time_in_city(city)
 

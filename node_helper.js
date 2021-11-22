@@ -21,6 +21,10 @@ module.exports = NodeHelper.create({
             this.start_script();
 
         }
+    },
+
+    notificationReceived: function(){
+        
     }
     
 });
