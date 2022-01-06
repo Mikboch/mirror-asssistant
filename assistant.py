@@ -21,7 +21,7 @@ import online_recognizer
 import intent_manager
 
 # print(pvporcupine.KEYWORDS)
-path_to_sounds_folder = "./resources/sound_files/"
+path_to_sounds_folder = "modules/MMM-VoiceAssistant/resources/sound_files/"
 
 
 def create_mp3_file_from_text(text, file_format):
@@ -77,17 +77,27 @@ speak_from_saved_file("notification_ambient.wav")
 
 def send_to_node(status, assistant_response):
     try:
-        print(json.dumps({"message": assistant_response}))
+        if assistant_response != "":
+            data = {"status": status, "assistant_response": assistant_response}
+        else:
+            data = {"status": status}
+
+        # stringified_data = json.dumps(data)
+        print(json.dumps(data))
     except Exception:
         print("Error while trying to send message to node")
+    # sys.stdout.write(stringified_data)
     sys.stdout.flush()
 
 
+send_to_node("ASSISTANT_ACTIVATED", "")
 command = "Who is the who "
 
 sentence = intent_manager.process_command(command)
-print(sentence)
-send_to_node(sentence)
+# print(sentence)
+send_to_node("COMMAND_SENT", sentence)
+# time.sleep(3)
+# send_to_node("COMMAND_SENT", "Yo mom fat")
 
 # main loop
 # while True:

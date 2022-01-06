@@ -5,7 +5,7 @@ import json
 
 from wikipedia.exceptions import DisambiguationError, PageError
 
-with open("./resources/intents/wikipedia_keywords.json") as f:
+with open("modules/MMM-VoiceAssistant/resources/intents/wikipedia_keywords.json") as f:
     keywords_file = json.load(f)
 
 

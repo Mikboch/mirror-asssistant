@@ -1,13 +1,13 @@
 #  "keywords": "what, what's, time, day, weather, what, in, today, tell, me, look, play, on, youtube, spotify, add, at, am., pm."
 import sys
 
-sys.path.append("./services")
+sys.path.append("modules/MMM-VoiceAssistant/services")
 import date_time_service
 import wikipedia_service
 import json
 
 
-path_to_intents = "./resources/intents/"
+path_to_intents = "modules/MMM-VoiceAssistant/resources/intents/"
 
 with open(path_to_intents + "intents.json") as f:
     intents_base = json.load(f)
@@ -30,7 +30,7 @@ def process_command(command):
     command = command.lower()
     formatted = command.split(" ")
 
-    print("after trasformation: " + command)
+    # print("after trasformation: " + command)
     for word in formatted:
         global intents
         print("entered through: " + word)
@@ -58,5 +58,5 @@ def process_command(command):
 
     print("intents before service: ")
     # print(intents)
-    print(formatted)
+    # print(formatted)
     return launch_appropriate_service(intents, formatted)
