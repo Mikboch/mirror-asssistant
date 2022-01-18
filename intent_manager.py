@@ -4,6 +4,7 @@ import sys
 sys.path.append("modules/MMM-VoiceAssistant/services")
 import date_time_service
 import wikipedia_service
+import state_service
 import json
 
 
@@ -21,42 +22,41 @@ def launch_appropriate_service(service_name, command):
     elif service_name == "wikipedia_service":
         data = wikipedia_service.take_command_and_return_info(command)
         return data
-    # elif service_name=="":
-    # elif service_name=="":
+    elif service_name == "state_service":
+        state_service.execute_command(command)
 
 
 def process_command(command):
-    command = command + "#"
-    command = command.lower()
-    formatted = command.split(" ")
+    if command != None:
+        command = command + "#"
+        command = command.lower()
+        formatted = command.split(" ")
+        intents = intents_base
+        print("after trasformation: " + command)
+        for word in formatted:
+            # global intents
+            print("entered through: " + word)
+            print(intents)
 
-    # print("after trasformation: " + command)
-    for word in formatted:
-        global intents
-        print("entered through: " + word)
-
-        try:
-            if word == "#":
-                intents = intents["#"]
-                break
-
-            if intents[word] == "-":
-                intents = intents["-"]
-                break
-
-            # print("blob")
-            # if intents[word] == None:
-            #     print("nic")
-            #     break
-            intents = intents[word]
-        except:
             try:
-                intents = intents["*"]
-                break
-            except:
-                return "I don't know how to respond to that"
+                if word == "#":
+                    intents = intents["#"]
+                    break
 
-    print("intents before service: ")
-    # print(intents)
-    # print(formatted)
-    return launch_appropriate_service(intents, formatted)
+                if intents[word] == "-":
+                    intents = intents["-"]
+                    break
+
+                intents = intents[word]
+            except Exception as error:
+                print("Exception:")
+                print(error)
+                try:
+                    intents = intents["*"]
+                    break
+                except:
+                    return "I don't know how to respond to that"
+
+        print("intents before service: ")
+        print(formatted)
+        return launch_appropriate_service(intents, formatted)

@@ -1,54 +1,62 @@
 {
-    "what": {
+  "what": {
+    "time": {
+      "is": {
+        "it": {
+          "in": "-",
+          "-": "date_time_service",
+          "#": "date_time_service"
+        }
+      }
+    },
+    "day": {
+      "is": {
+        "it": "-",
+        "-": "date_time_service",
+        "#": "date_time_service"
+      }
+    },
+    "date": {
+      "is": {
+        "it": "-",
+        "-": "date_time_service"
+      }
+    },
+    "is": {
+      "the": {
+        "date": "-",
+        "-": "date_time_service"
+      },
+      "*": "wikipedia_service"
+    }
+  },
+  "tell": {
+    "me": {
+      "the": {
         "time": {
-            "is": {
-                "it": {
-                    "in": "-",
-                    "-": "date_time_service",
-                    "#": "date_time_service"
-                }
-            }
+          "in": "-",
+          "-": "date_time_service",
+          "#": "date_time_service"
         },
-        "day": {
-            "is": {
-                "it": "-",
-                "-": "date_time_service",
-                "#": "date_time_service"
-            }
-        },
-        "date": {
-            "is": {
-                "it": "-",
-                "-": "date_time_service"
-            }
-        },
-        "is": {
-            "the": {
-                "date": "-",
-                "-": "date_time_service",
-                "*": "wikipedia_service"
-            },
-            "*": "wikipedia_service"
-        }
-    },
-    "tell": {
-        "me": {
-            "the": {
-                "time": { "in": "-", "-": "date_time_service" },
-                "date": "-",
-                "-": "date_time_service"
-            },
-            "what": { "is": "-", "-": "wikipedia_service" }
-        }
-    },
-    "look": { "for": "-", "-": "wikipedia_service" },
-    "give": {
-        "me": {
-            "info": { "about": "-", "-": "wikipedia_service" },
-            "information": { "about": "-", "-": "wikipedia_service" }
-        }
-    },
-    "who": { "is": "-", "-": "wikipedia_service" },
-    "play": "music_service",
-    "add": "calendar_service"
+        "date": "-",
+        "-": "date_time_service"
+      },
+      "what": { "is": "-", "-": "wikipedia_service" }
+    }
+  },
+  "look": { "for": "-", "-": "wikipedia_service" },
+  "give": {
+    "me": {
+      "info": { "about": "-", "-": "wikipedia_service" },
+      "information": { "about": "-", "-": "wikipedia_service" }
+    }
+  },
+  "who": { "is": "-", "-": "wikipedia_service" },
+  "stop": { "the": { "system": { "#": "state_service" } } },
+  "restart": {
+    "the ": { "the": { "system": { "#": "state_service" } } },
+    "#": "state_service"
+  },
+  "play": "music_service",
+  "add": "calendar_service"
 }
